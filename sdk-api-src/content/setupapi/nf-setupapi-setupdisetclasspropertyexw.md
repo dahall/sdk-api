@@ -67,6 +67,8 @@ A pointer to a <a href="/windows-hardware/drivers/install/devpropkey">DEVPROPKEY
 
 A <a href="/previous-versions/ff543546(v=vs.85)">DEVPROPTYPE</a>-typed value that represents the property-data-type identifier for the class property. For more information about the property-data-type identifier, see the <b>Remarks</b> section later in this topic.
 
+If either the property or the property value is being deleted, this value must be set to zero.
+
 ### -param PropertyBuffer [in, optional]
 
 A pointer to a buffer that contains the class property value. If either the property or the property value is being deleted, this pointer must be set to <b>NULL</b>, and <i>PropertyBufferSize</i> must be set to zero. For more information about property value requirements, see the <b>Remarks</b> section later in this topic.
@@ -164,8 +166,7 @@ The property key that is supplied by <i>PropertyKey</i> is not valid.
 </dl>
 </td>
 <td width="60%">
-An unspecified internal data value was not valid. This error could be logged if either the <i>ClassGuid</i> value is not a valid GUID or the property value does not match the property type specified by <i>PropertyType</i>.
-
+An unspecified internal data value was not valid. This error could be logged if the <i>ClassGuid</i> value is not a valid GUID, if the property value does not match the property type specified by <i>PropertyType</i>, or if <i>PropertyBuffer</i> is <b>NULL</b> and <i>PropertyBufferSize</i> is zero, but <i>PropertyType</i> is not zero.
 </td>
 </tr>
 <tr>
